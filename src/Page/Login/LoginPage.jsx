@@ -1,3 +1,9 @@
-export default LoginPage ( ){
-    
+const LoginPage  = ( ) =>{
+    return (
+        <div>
+            login
+        </div>
+    )
 }
+
+export default LoginPage;
