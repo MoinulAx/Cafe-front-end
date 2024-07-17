@@ -7,6 +7,7 @@ const  NavBar = () => {
       <Link to='/' className="logo">LaManRis Café</Link>
       <Link to='/login'>Login</Link>
       
+      
     </nav>
   );
 }
