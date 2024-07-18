@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import './login.scss'
 //Componets
-import SignInForm from '../../Componets /SignIn/SignIn';
-import SignUpForm from '../../Componets /SignUp/SignUp';
+import SignInForm from '../../Components/SignIn/SignIn';
+import SignUpForm from '../../Components/SignUp/SignUp';
 
 const LoginPage = () => {
   const [isSignIn, setIsSignIn] = useState(true);

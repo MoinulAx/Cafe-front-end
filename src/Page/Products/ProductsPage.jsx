@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from "react";
+import './products.scss';
+import ProductCard from "../../Components/ProductsCard/ProductsCard";
 
-import './products.scss'
-import ProductCard from "../../Componets /ProductsCard/ProductsCard";
+const API_URL = `${import.meta.env.VITE_API_URL}/products`;
 
 function ProductsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        //Simulated fetched products
-        const fetchedProducts = [
-            { id: 1, name: 'Coffee', price: 5, description: 'Delicious coffee' },
-            { id: 2, name: 'Tea', price: 3, description: 'Refreshing tea' },
-            { id: 3, name: 'Pastry', price: 4, description: 'Tasty pastry' },
-        ];
-        setProducts(fetchedProducts);
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
     }, []);
+
     return (
         <div className="products-page">
             <h1>Products</h1>
             <ul>
                 {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.product_id} product={product} />
                 ))}
             </ul>
         </div>
