@@ -57,13 +57,15 @@ $font-family: 'Poppins', sans-serif;
       color: $primary-color;
     }
 
-    .order-button {
+    .order-button,
+    .products-button {
         background-color: $secondary-color;
         color: whitesmoke;
         border: 2px solid $primary-color;
         border-radius: 25px;  
         padding: 10px 20px;
         cursor: pointer;
+        text-decoration: none;
         transition: background-color 0.3s, color 0.3s;
       &:hover {
         background-color: $primary-color;
