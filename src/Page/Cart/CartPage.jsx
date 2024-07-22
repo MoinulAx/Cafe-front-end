@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import './cartpage.scss';
 import UserProductCard from "../../Components/CartItems/UserProductCard";
+import Owner from "../Owner/Owner";
 import { useParams } from "react-router-dom";
 import { fetchPhotos } from "../../utils/fetchPhoto";
+
+
 const API_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
 
 function CartPage() {
@@ -69,6 +72,10 @@ function CartPage() {
             updateProductsWithPhotos();
         }
     }, [cart]);
+
+    if(id == 1) {
+        return <Owner />
+    }
 
     return (
         <div className="products-page">

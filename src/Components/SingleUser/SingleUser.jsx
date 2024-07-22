@@ -71,7 +71,7 @@ const SingleUser = () => {
     }, [userCartProducts]);
 
     if(id == 1) {
-        return <Owner/>
+        return <Owner />
     }
 
     return (

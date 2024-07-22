@@ -1,22 +1,86 @@
 import React, { useEffect, useState } from 'react';
+import "./Orders.scss"
 
 const Orders = () => {
+  const API_URL = `${import.meta.env.VITE_BASE_URL}/orders`;
+  const CART_PRODUCTS_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const API_URL = `${import.meta.env.VITE_BASE_URL}/orders`
-    const [orders, setOrders] = useState([])
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await fetch(API_URL);
+        const ordersData = await res.json();
 
-    useEffect(() => {
-        fetch(API_URL)
-        .then( res => res.json() )
-        .then( res => setOrders( res ) )
-        .catch( err => console.error( err ) )
-    }, [])
+        const ordersWithCartProducts = await Promise.all(
+          ordersData.map(async (order) => {
+            try {
+              const cartProductsRes = await fetch(`${CART_PRODUCTS_URL}/${order.order_cart}`);
+              const cartProductsData = await cartProductsRes.json();
+              
+              const cartProducts = await Promise.all(
+                cartProductsData.map(async (cartProduct) => {
+                  const productRes = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${cartProduct.products_id}`);
+                  const productData = await productRes.json();
+                  return { ...productData, quantity: cartProduct.products_quantity };
+                })
+              );
 
-    return (
-        <div>
-            
-        </div>
-    );
+              return { ...order, cartProducts };
+            } catch (cartError) {
+              console.error(`Failed to fetch cart products for order ${order.order_id}`, cartError);
+              return { ...order, cartProducts: [] };
+            }
+          })
+        );
+
+        setOrders(ordersWithCartProducts);
+      } catch (err) {
+        console.error('Failed to fetch orders', err);
+        setError('Failed to fetch orders');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  return (
+    <div className="orders-container">
+      <h2>Orders</h2>
+      <ul>
+        {orders.map((order) => (
+          <li key={order.order_id}>
+            <h3>Order ID: {order.order_id}</h3>
+            <p>User ID: {order.order_user}</p>
+            <h4>Cart Products:</h4>
+            <ul>
+              {order.cartProducts.length > 0 ? (
+                order.cartProducts.map((product) => (
+                  <li key={product.product_id}>
+                    {product.product_name} - {product.quantity}
+                  </li>
+                ))
+              ) : (
+                <li>No products in cart</li>
+              )}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Orders;
