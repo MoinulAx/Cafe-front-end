@@ -7,22 +7,6 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 function ProductsPage() {
     const [products, setProducts] = useState([]);
 
-<<<<<<< HEAD
-        
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
-
-=======
     useEffect(() => {
         console.log(API_URL)
         
@@ -34,7 +18,6 @@ function ProductsPage() {
         .then( res => setProducts(res))
         .catch( err => console.error(err) )
     }, []);
->>>>>>> refs/remotes/origin/test
 
     return (
         <div className="products-page">
