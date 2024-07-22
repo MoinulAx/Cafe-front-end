@@ -2,27 +2,21 @@ import React, { useState, useEffect } from "react";
 import './products.scss';
 import ProductCard from "../../Components/ProductsCard/ProductsCard";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/products`;
+const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 
 function ProductsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
+        console.log(API_URL)
         
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
-
-        fetchProducts();
+        fetch(API_URL)
+        .then( res => {
+            console.log(res)
+            return res.json()
+        })
+        .then( res => setProducts(res))
+        .catch( err => console.error(err) )
     }, []);
 
     return (
