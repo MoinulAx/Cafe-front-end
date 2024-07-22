@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import './products.scss';
 import ProductCard from "../../Components/ProductsCard/ProductsCard";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/products`;
+const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 
 function ProductsPage() {
     const [products, setProducts] = useState([]);
 
+<<<<<<< HEAD
         
         const fetchProducts = async () => {
             try {
@@ -21,6 +22,19 @@ function ProductsPage() {
             }
         };
 
+=======
+    useEffect(() => {
+        console.log(API_URL)
+        
+        fetch(API_URL)
+        .then( res => {
+            console.log(res)
+            return res.json()
+        })
+        .then( res => setProducts(res))
+        .catch( err => console.error(err) )
+    }, []);
+>>>>>>> refs/remotes/origin/test
 
     return (
         <div className="products-page">
