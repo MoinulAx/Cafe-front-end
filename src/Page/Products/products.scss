@@ -18,16 +18,10 @@ $font-family: 'Poppins', sans-serif;
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-<<<<<<< HEAD
-    gap: 20px;
-    padding: 0;
-    list-style-type: none;
-=======
     gap: 75px;
     box-sizing: border-box;
     max-width: 100vw;
     padding: 20px;
->>>>>>> refs/remotes/origin/test
 
     li {
       background-color: white;

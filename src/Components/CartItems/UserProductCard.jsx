@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UserProductCard = ({ product }) => {
+const UserProductCard = ({ product}) => {
     const [quantity, setQuantity] = useState(product.product_quantity);
 
     const incrementQuantity = () => {
