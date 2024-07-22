@@ -7,4 +7,10 @@ $font-family: 'Poppins', sans-serif;
 .product-card {
   height: 400px;
   width: 300px;
+
+  &__image {
+    width: 300px;
+  }
+
 }
+
