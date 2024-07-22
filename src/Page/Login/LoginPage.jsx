@@ -6,8 +6,7 @@ import './login.scss'
 import SignInForm from '../../Componets /SignIn/SignIn';
 import SignUpForm from '../../Componets /SignUp/SignUp';
 
-const LoginPage = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
+const LoginPage = ({setIsSignIn , isSignIn}) => {
 
   const toggleForm = () => {
     setIsSignIn(!isSignIn);

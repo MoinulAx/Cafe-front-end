@@ -7,6 +7,7 @@ import LoginPage from './Page/Login/LoginPage';
 import './App.css'
 
 function App() {
+  const [isSignIn, setIsSignIn] = useState(true);
 
   return (
     <div>
@@ -15,7 +16,7 @@ function App() {
           <main>
             <Routes>
 
-              <Route path='/' element = {<HomePage/>}/>
+              <Route path='/' element = {<HomePage isSignIn = {isSignIn} setIsSignIn = {setIsSignIn}/>}/>
               <Route path= '/login' element = {<LoginPage/>}/>
               
               
