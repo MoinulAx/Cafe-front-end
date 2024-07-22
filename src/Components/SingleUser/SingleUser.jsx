@@ -42,6 +42,7 @@ const SingleUser = () => {
         if (userCart.length > 0) {
             fetchProducts();
         }
+
     }, [userCart]);
 
     useEffect(() => {
@@ -90,6 +91,7 @@ const SingleUser = () => {
                     </>
                 )}
             </ul>
+            <button onClick={handleSubmit}>Submit Order</button>
         </div>
     );
 };
