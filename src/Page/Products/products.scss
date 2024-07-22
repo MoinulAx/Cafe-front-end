@@ -14,8 +14,13 @@ $font-family: 'Poppins', sans-serif;
   }
 
   ul {
-    list-style: none;
-    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 45px;
+    // justify-content: center;
+    // align-items: center;
+    padding: 0px;
+    border: 2px solid;
 
     li {
       background-color: $primary-color;
