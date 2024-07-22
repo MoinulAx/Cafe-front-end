@@ -5,10 +5,10 @@ import Owner from '../../Page/Owner/Owner';
 import UserProductCard from '../CartItems/UserProductCard';
 const SingleUser = () => {
     const { id } = useParams();
-    const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
-    const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
     const [userCart, setUserCart] = useState([]);
     const [userCartProducts, setUserCartProducts] = useState([]);
+    const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
+    const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
 
     useEffect(() => {
         fetch(CART_API)
