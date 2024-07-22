@@ -5,6 +5,7 @@ import './productscard.scss';
 const ProductCard = ({ product }) => {
     return (
         <li className="product-card">
+            <img src={product.product_image} />
             <h2>{product.product_name}</h2>
             <p>Price:${product.product_price}</p>
             <p>Quantity: {product.product_quantity}</p>

@@ -6,17 +6,15 @@ const Orders = () => {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-
         fetch(API_URL)
         .then( res => res.json() )
         .then( res => setOrders( res ) )
         .catch( err => console.error( err ) )
-
     }, [])
 
     return (
         <div>
-
+            
         </div>
     );
 };
