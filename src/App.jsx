@@ -11,7 +11,7 @@ import UserProductCard from './Components/CartItems/UserProductCard';
 
 
 import './App.css'
-
+import CartPage from './Page/Cart/CartPage';
 function App() {
 
   const [isLogin, setLogin] = useState(false)
@@ -27,8 +27,7 @@ function App() {
             <Route path='/' element={ <HomePage /> } />
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/products' element={ <ProductsPage /> } />
-            <Route path='/user/:id' element={ <User/> }/>
-            <Route path='/user/:id/cart' element = {<UserProductCard />} />
+            <Route path='/user/:id' element={ <CartPage/> }/>
           </Routes>
 
         </main>
