@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/fetchPhoto';
 
-import UserProductCard from '../ProductsCard/UserProductCard';
-
+import UserProductCard from '../CartItems/UserProductCard';
 const SingleUser = () => {
     const { id } = useParams();
     const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;

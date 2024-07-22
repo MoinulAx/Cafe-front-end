@@ -18,7 +18,7 @@ const LoginPage = () => {
       {isSignIn ? <SignInForm /> : <SignUpForm />}
       <div>
         {isSignIn ? "Don't have an account? " : "Already have an account? "}
-        <p onClick={toggleForm}>
+        <p className='link' onClick={toggleForm}>
           {isSignIn ? "Sign Up" : "Sign In"}
         </p>
       </div>

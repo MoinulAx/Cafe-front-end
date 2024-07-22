@@ -7,7 +7,6 @@ const API_URL = `${import.meta.env.VITE_API_URL}/products`;
 function ProductsPage() {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
         
         const fetchProducts = async () => {
             try {
@@ -22,8 +21,6 @@ function ProductsPage() {
             }
         };
 
-        fetchProducts();
-    }, []);
 
     return (
         <div className="products-page">
