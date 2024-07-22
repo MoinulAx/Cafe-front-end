@@ -1,0 +1,22 @@
+.product-card__controls {
+    display: flex;
+    align-items: center;
+}
+
+.product-card__control {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.product-card__control--decrement {
+    background-color: #ffdddd;
+}
+
+.product-card__control--increment {
+    background-color: #ddffdd;
+}

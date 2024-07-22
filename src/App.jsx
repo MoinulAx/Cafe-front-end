@@ -7,11 +7,14 @@ import HomePage from './Page/Home/Homepage';
 import LoginPage from './Page/Login/LoginPage';
 import ProductsPage from './Page/Products/ProductsPage';
 import User from './Page/User/User';
+import UserProductCard from './Components/CartItems/UserProductCard';
 
 
 import './App.css'
 
 function App() {
+
+  const [isLogin, setLogin] = useState(false)
 
   return (
     <div>
@@ -25,7 +28,7 @@ function App() {
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/products' element={ <ProductsPage /> } />
             <Route path='/user/:id' element={ <User/> }/>
-
+            <Route path='/user/:id/cart' element = {<UserProductCard />} />
           </Routes>
 
         </main>
