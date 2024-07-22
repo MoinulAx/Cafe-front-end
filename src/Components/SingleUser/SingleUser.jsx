@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/fetchPhoto';
-
+import Owner from '../../Page/Owner/Owner';
 import UserProductCard from '../CartItems/UserProductCard';
 const SingleUser = () => {
     const { id } = useParams();
@@ -67,6 +67,10 @@ const SingleUser = () => {
             updateProductsWithPhotos();
         }
     }, [userCartProducts]);
+
+    if(id == 1) {
+        return <Owner/>
+    }
 
     return (
         <div className="products-page">

@@ -21,6 +21,7 @@ function App() {
       <Router>
         <NavBar />
         <main>
+          
           <Routes>
 
             <Route path='/' element={ <HomePage /> } />
@@ -29,10 +30,9 @@ function App() {
             <Route path='/user/:id' element={ <User/> }/>
             <Route path='/user/:id/cart' element = {<UserProductCard />} />
           </Routes>
+
         </main>
-
       </Router>
-
     </div>
   )
 }
