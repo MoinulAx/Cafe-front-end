@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/fetchPhoto';
 
 import UserProductCard from '../ProductsCard/UserProductCard';
+import Owner from '../../Page/Owner/Owner';
 
 const SingleUser = () => {
     const { id } = useParams();
@@ -68,6 +69,10 @@ const SingleUser = () => {
             updateProductsWithPhotos();
         }
     }, [userCartProducts]);
+
+    if(id == 1) {
+        return <Owner/>
+    }
 
     return (
         <div className="products-page">

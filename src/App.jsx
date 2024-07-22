@@ -18,6 +18,7 @@ function App() {
       <Router>
         <NavBar />
         <main>
+          
           <Routes>
 
             <Route path='/' element={ <HomePage /> } />
@@ -26,10 +27,9 @@ function App() {
             <Route path='/user/:id' element={ <User/> }/>
 
           </Routes>
+
         </main>
-
       </Router>
-
     </div>
   )
 }

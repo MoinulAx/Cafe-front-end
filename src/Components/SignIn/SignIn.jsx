@@ -22,6 +22,8 @@ const SignInForm = () => {
     e.preventDefault()
     const foundUser = users.find( user => user.user_name.toLowerCase() === currentUser.username.toLowerCase() )
 
+    console.log(foundUser)
+
     if(foundUser && currentUser.password === foundUser.user_password){
       navigate(`/user/${foundUser.user_id}`)
     }else {

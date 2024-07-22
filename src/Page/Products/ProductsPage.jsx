@@ -8,14 +8,9 @@ function ProductsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        console.log(API_URL)
-        
         fetch(API_URL)
-        .then( res => {
-            console.log(res)
-            return res.json()
-        })
-        .then( res => setProducts(res))
+        .then( res => res.json() )
+        .then( res => setProducts(res) )
         .catch( err => console.error(err) )
     }, []);
 
