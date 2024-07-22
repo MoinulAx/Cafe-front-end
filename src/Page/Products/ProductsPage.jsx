@@ -8,6 +8,7 @@ function ProductsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
+        
         const fetchProducts = async () => {
             try {
                 const response = await fetch(API_URL);
