@@ -34,7 +34,9 @@ const HomePage = () => {
         <h2>Order Now</h2>
         <p>Choose your favorite items and have them shipped to you!</p>
         <button className="order-button">Order Online</button>
-        <Link to="/products" className='products-button'>View Products</Link>
+        <button className='products-button'>
+        <Link to="/products" >View Products</Link>
+          </button>
       </section>
     </div>
   );

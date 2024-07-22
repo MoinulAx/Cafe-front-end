@@ -73,6 +73,10 @@ $font-family: 'Poppins', sans-serif;
         border: 2px solid $secondary-color;
         background-color: darken($primary-color, 10%);
       }
+      a{
+        color: aliceblue;
+        text-decoration: none;
+      }
     }
   }
 }

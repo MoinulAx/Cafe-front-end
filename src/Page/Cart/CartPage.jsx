@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './products.scss';
-import ProductCard from "../../Components/ProductsCard/ProductsCard";
-
-const API_URL = `${import.meta.env.VITE_API_URL}/products`;
+import UserProductCard from "../../Components/CartItems/UserProductCard";
+const API_URL = `${import.meta.env.VITE_API_URL}/cart`;
 
 function ProductsPage() {
     const [cart, setCart] = useState([]);
@@ -27,6 +26,7 @@ function ProductsPage() {
             <h1>Products</h1>
             <ul>
                 {cart.map(cartItem => (
+                    <UserProductCard cartItem = {cartItem}/>
                 ))}
             </ul>
         </div>
