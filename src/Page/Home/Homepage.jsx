@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './home.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,6 +34,7 @@ const HomePage = () => {
         <h2>Order Now</h2>
         <p>Choose your favorite items and have them shipped to you!</p>
         <button className="order-button">Order Online</button>
+        <Link to="/products" className='products-button'>View Products</Link>
       </section>
     </div>
   );
