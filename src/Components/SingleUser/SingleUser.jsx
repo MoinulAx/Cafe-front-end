@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/fetchPhoto';
 import Owner from '../../Page/Owner/Owner';
 import UserProductCard from '../CartItems/UserProductCard';
+
 const SingleUser = () => {
     const { id } = useParams();
     const [userCart, setUserCart] = useState([]);
@@ -13,7 +14,7 @@ const SingleUser = () => {
     useEffect(() => {
         fetch(CART_API)
             .then((res) => res.json())
-            .then((res) => setUserCart(res))
+            .then((res) => setUserCart(res) )
             .catch((err) => console.error(err));
     }, []);
 
