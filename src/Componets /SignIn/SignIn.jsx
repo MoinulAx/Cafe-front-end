@@ -1,6 +1,6 @@
 import './signin.scss'
 
-const SignInForm = () => (
+const SignInForm = () => {
     <div className="sign-in">
       <h2>Sign In</h2>
       <form>
@@ -10,6 +10,6 @@ const SignInForm = () => (
       </form>
       
     </div>
-);
+};
 
 export default SignInForm;
