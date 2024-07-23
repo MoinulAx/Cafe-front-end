@@ -101,33 +101,33 @@ function ProductsPage({userId}) {
     return (
         <div className="products-page">
             <h1>Products</h1>
-            <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct} className="product-form">
-                <input
-                    type="text"
-                    name="name"
-                    value={newProduct.name}
-                    onChange={handleInputChange}
-                    placeholder="Name"
-                    required
-                />
-                <input
-                    type="text"
-                    name="price"
-                    value={newProduct.price}
-                    onChange={handleInputChange}
-                    placeholder="Price"
-                    required
-                />
-                <input
-                    type="text"
-                    name="description"
-                    value={newProduct.description}
-                    onChange={handleInputChange}
-                    placeholder="Description"
-                    required
-                />
+            {userId == 1 && <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct} className="product-form">
+        <input  
+                type="text"
+                name="product_name"
+                value={newProduct.product_name}
+                onChange={handleInputChange}
+                placeholder="Name"
+                required
+            />
+            <input
+                type="text"
+                name="product_price"
+                value={newProduct.product_price}
+                onChange={handleInputChange}
+                placeholder="Price"
+                required
+            />
+            <input
+                type="text"
+                name="product_quantity"
+                value={newProduct.product_quantity}
+                onChange={handleInputChange}
+                placeholder="Quantity"
+                required
+            />
                 <button type="submit">{editingProduct ? 'Update' : 'Add'} Product</button>
-            </form>
+            </form>}
             <ul>
                 {products.map(product => (
                     <ProductCard
