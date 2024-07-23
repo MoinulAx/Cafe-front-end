@@ -82,7 +82,7 @@ function CartPage({ userId }) {
       <h1>Cart</h1>
       <ul>
         {cart.map(cartItem => (
-          <UserProductCard key={cartItem.cart_product_id} product={cartItem} />
+          <UserProductCard key={cartItem.cart_product_id} product={cartItem} userId = {userId}/>
         ))}
       </ul>
     </div> : <ErrorPage/> }

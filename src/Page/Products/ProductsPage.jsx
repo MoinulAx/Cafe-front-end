@@ -5,7 +5,7 @@ import { fetchPhotos } from "../../utils/fetchPhoto";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 
-function ProductsPage() {
+function ProductsPage({userId}) {
     const [products, setProducts] = useState([]);
     const [newProduct, setNewProduct] = useState({ name: '', price: '', description: '' });
     const [editingProduct, setEditingProduct] = useState(null);
@@ -135,6 +135,8 @@ function ProductsPage() {
                         product={product}
                         onEdit={() => handleEditProduct(product)}
                         onDelete={() => handleDeleteProduct(product.product_id)}
+                        userId = {userId}
+                        
                     />
                 ))}
             </ul>
