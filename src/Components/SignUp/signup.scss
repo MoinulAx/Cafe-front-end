@@ -1,19 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+
+$primary-color: burlywood;
+$secondary-color: brown;
+$hover-color: darken($primary-color, 10%);
+$font-family-main: 'Poppins', sans-serif;
+$font-family-script: 'Dancing Script', cursive;
 
 .sign-up {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: burlywood;
-    font-family: 'Poppins', sans-serif;  
+    background-color: $primary-color;
+    font-family: $font-family-main;  
     padding: 20px;
     border-radius: 20px;
-
 
     h2 {
         color: white;
         margin-bottom: 20px;
         margin-right: 100px;
+        font-family: $font-family-script; /* Apply script font to header */
     }
 
     form {
@@ -31,6 +38,12 @@
             border: 1px solid #ccc;
             border-radius: 20px;
             font-size: 16px;
+            font-family: $font-family-script; /* Apply script font to input text */
+            
+            &::placeholder {
+                color: #aaa;
+                font-family: $font-family-script; /* Apply script font to placeholder text */
+            }
 
             &:focus {
                 border-color: #007bff;
@@ -40,26 +53,29 @@
 
         button {
             padding: 10px;
-            background-color: burlywood;
+            background-color: $primary-color;
             color: white;
             border: none;
             border-radius: 20px;
             font-size: 16px;
             cursor: pointer;
+            font-family: $font-family-script; /* Apply script font to button text */
 
             &:hover {
-                background-color: brown;
+                background-color: $secondary-color;
             }
         }
     }
 
     p {
         margin-top: 15px;
-        color: burlywood;
+        color: $primary-color;
+        font-family: $font-family-script; /* Apply script font to paragraph text */
 
         a {
-            color: burlywood;
+            color: $primary-color;
             text-decoration: none;
+            font-family: $font-family-script; /* Apply script font to link text */
 
             &:hover {
                 text-decoration: underline;
