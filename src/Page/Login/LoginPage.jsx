@@ -15,7 +15,7 @@ const LoginPage = ({setUserId}) => {
 
   return (
     <div className="login-page">
-      {isSignIn ? <SignInForm setUserId = {setUserId}/> : <SignUpForm />}
+      {isSignIn ? <SignInForm setUserId = {setUserId}/> : <SignUpForm setIsSignIn={setIsSignIn}/>}
       <div className='toggle-container'>
         {isSignIn ? "Don't have an account? " : "Already have an account? "}
         <p className='link' onClick={toggleForm}>

@@ -4,6 +4,7 @@ import UserProductCard from "../../Components/CartItems/UserProductCard";
 import Owner from "../Owner/Owner";
 import { useParams } from "react-router-dom";
 import { fetchPhotos } from "../../utils/fetchPhoto";
+import ErrorPage from "../../Components/404Err/ErrorPage";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
 
@@ -77,14 +78,14 @@ function CartPage({ userId }) {
 
   return (
     <>
-    {userId && <div className="products-page">
+    {userId ? <div className="products-page">
       <h1>Cart</h1>
       <ul>
         {cart.map(cartItem => (
           <UserProductCard key={cartItem.cart_product_id} product={cartItem} />
         ))}
       </ul>
-    </div>}
+    </div> : <ErrorPage/> }
     </>
   );
 }

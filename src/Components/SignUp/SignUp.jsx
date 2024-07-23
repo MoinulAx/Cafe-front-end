@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './signup.scss';
 import { useNavigate } from 'react-router-dom';
 
-const SignUpForm = () => {
+const SignUpForm = ({setIsSignIn}) => {
 
     const navigate = useNavigate()
 
@@ -33,8 +33,7 @@ const SignUpForm = () => {
         })
         .then( res => res.json())
         .then( res =>{ 
-            console.log(res)
-            navigate(`/users/${res.user.user_id}`)
+            setIsSignIn(true)
         })
         .catch( err => console.error(err))
     }
