@@ -62,7 +62,7 @@ const Orders = () => {
       <h2>Orders</h2>
       <ul>
         {orders.map((order) => {
-            return <OrdersCard order={order}/>
+            return <OrdersCard order={order} key={order.order_id}/>
         })}
       </ul>
     </div>
