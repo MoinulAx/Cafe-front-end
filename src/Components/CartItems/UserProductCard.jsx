@@ -1,64 +1,57 @@
 import React, { useEffect, useState } from 'react';
 
-<<<<<<< HEAD
-const UserProductCard = ({ product,userId }) => {
-    const [quantity, setQuantity] = useState(product.product_quantity);
-=======
 const UserProductCard = ({ product, userCart }) => {
     const [quantity, setQuantity] = useState(userCart.products_quantity);
-    const [cartProducts, setCartProducts] = useState([])
-    const [singleCartProduct, setSingleCartProduct] = useState({})
-    const API = `${import.meta.env.VITE_BASE_URL}/cart_products`
-    const updatedProduct = {
-        carts_id: userCart.cart_id,
-        products_id: product.product_id,
-        products_quantity: quantity
-    }
-    
+    const [cartProducts, setCartProducts] = useState([]);
+    const [singleCartProduct, setSingleCartProduct] = useState({});
+    const API = `${import.meta.env.VITE_BASE_URL}/cart_products`;
+
     useEffect(() => {
         fetch(`${API}/${userCart.cart_id}`)
-        .then(res => res.json())
-        .then( res => setCartProducts(res))
-    }, [])
+            .then(res => res.json())
+            .then(res => setCartProducts(res));
+    }, [API, userCart.cart_id]);
 
     useEffect(() => {
-        const cartProduct = cartProducts.find(cP => cP.products_id === product.product_id)
-        setSingleCartProduct(cartProduct)
-    },[cartProducts])
->>>>>>> refs/remotes/origin/test
+        const cartProduct = cartProducts.find(cP => cP.products_id === product.product_id);
+        setSingleCartProduct(cartProduct);
+    }, [cartProducts, product.product_id]);
 
-    const incrementQuantity = () => {
-        setQuantity(quantity + 1)
+    const updateProductQuantity = (newQuantity) => {
+        const updatedProduct = {
+            carts_id: userCart.cart_id,
+            products_id: product.product_id,
+            products_quantity: newQuantity
+        };
 
         fetch(`${API}/${singleCartProduct.cart_product_id}`, {
             method: "PUT",
             body: JSON.stringify(updatedProduct),
-            headers:{
+            headers: {
                 "Content-type": "application/json"
             }
         })
-        .then( res => res.json())
-        .then( res => console.log(res))
+        .then(res => res.json())
+        .then(res => console.log(res));
+    };
+
+    const incrementQuantity = () => {
+        const newQuantity = quantity + 1;
+        setQuantity(newQuantity);
+        updateProductQuantity(newQuantity);
     };
 
     const decrementQuantity = () => {
         if (quantity > 0) {
-            setQuantity(quantity - 1);
-            fetch(`${API}/${singleCartProduct.cart_product_id}`, {
-                method: "PUT",
-                body: JSON.stringify(updatedProduct),
-                headers:{
-                    "Content-type": "application/json"
-                }
-            })
-            .then( res => res.json())
-            .then( res => console.log(res))
-        }else if(quantity == 0) {
+            const newQuantity = quantity - 1;
+            setQuantity(newQuantity);
+            updateProductQuantity(newQuantity);
+        } else if (quantity === 0) {
             fetch(`${API}/${singleCartProduct.cart_product_id}`, {
                 method: "DELETE"
             })
-            .then( res => res.json())
-            .then( res => console.log(res))
+            .then(res => res.json())
+            .then(res => console.log(res));
         }
     };
 

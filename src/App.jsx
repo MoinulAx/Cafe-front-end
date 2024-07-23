@@ -22,11 +22,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage setUserId={setUserId} />} />
-<<<<<<< HEAD
-            <Route path='/products' element={<ProductsPage userId = {userId}/>} />
-=======
             <Route path='/products' element={<ProductsPage userId={userId}/>} />
->>>>>>> refs/remotes/origin/test
             <Route path='/user/:id' element={<CartPage userId={userId} />} />
           </Routes>
         </main>

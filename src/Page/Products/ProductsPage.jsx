@@ -133,14 +133,7 @@ function ProductsPage({userId}) {
                     <ProductCard
                         key={product.product_id}
                         product={product}
-<<<<<<< HEAD
-                        onEdit={() => handleEditProduct(product)}
-                        onDelete={() => handleDeleteProduct(product.product_id)}
-                        userId = {userId}
-                        
-=======
                         userId={userId}
->>>>>>> refs/remotes/origin/test
                     />
                 ))}
             </ul>
