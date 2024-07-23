@@ -8,11 +8,12 @@ const ProductCard = ({ product, userId }) => {
     const API_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
     const CART_API = `${import.meta.env.VITE_BASE_URL}/cart`
     const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
-    const newProduct = {
+    const [newProduct , setNewProduct] = useState({
         carts_id: userId,
         products_id: product.product_id,
-        products_quantity: 1
-    }
+        products_quantity: quantity
+    })
+    
 
     const handleClick = (e) => {
         fetch(API_URL, {
@@ -30,7 +31,7 @@ const ProductCard = ({ product, userId }) => {
     }
 
     const handleDecrement = () => {
-        if(product.product_quantity > 0){
+        if(quantity > 0){
             setQuantity(quantity - 1)
 
             fetch(`${PRODUCTS_API}/${product.product_id}`, {
@@ -43,7 +44,7 @@ const ProductCard = ({ product, userId }) => {
             .then(res => res.json())
             .catch(err => console.error(err))
         }
-        if(product.product_quantity == 0){
+        if(quantity == 0){
             fetch(`${PRODUCTS_API}/${product.product_id}`, {
                 method: "DELETE"
             })
@@ -58,7 +59,7 @@ const ProductCard = ({ product, userId }) => {
             <h2 className='product-card__name'>{product.product_name}</h2>
             <p className='product-card__price'>Price: ${product.product_price}</p>
             <p className='product-card__quantity'>Quantity: {quantity}</p>
-            <button className='product-card__button' onClick={handleClick}>Add to Cart</button>
+            {quantity > 0 ? <button className='product-card__button' onClick={handleClick}>Add to Cart</button> : <div>out of stock </div>}
         </li>
     );
 };
