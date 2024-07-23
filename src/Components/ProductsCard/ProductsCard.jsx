@@ -4,7 +4,10 @@ import './productscard.scss';
 
 const ProductCard = ({ product, userId }) => {
 
+    const [quantity, setQuantity] = useState(product.product_quantity)
     const API_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
+    const CART_API = `${import.meta.env.VITE_BASE_URL}/cart`
+    const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
     const newProduct = {
         carts_id: userId,
         products_id: product.product_id,
@@ -12,7 +15,6 @@ const ProductCard = ({ product, userId }) => {
     }
 
     const handleClick = (e) => {
-
         fetch(API_URL, {
             method: "POST",
             body : JSON.stringify(newProduct),
@@ -24,6 +26,30 @@ const ProductCard = ({ product, userId }) => {
         .then(res => {
             console.log(res)
         })
+        handleDecrement()
+    }
+
+    const handleDecrement = () => {
+        if(product.product_quantity > 0){
+            setQuantity(quantity - 1)
+
+            fetch(`${PRODUCTS_API}/${product.product_id}`, {
+                method: "PUT",
+                body: JSON.stringify(product),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .catch(err => console.error(err))
+        }
+        if(product.product_quantity == 0){
+            fetch(`${PRODUCTS_API}/${product.product_id}`, {
+                method: "DELETE"
+            })
+            .then(res => res.json())
+            .catch(err => console.error(err))
+        }
     }
 
     return (
@@ -31,7 +57,7 @@ const ProductCard = ({ product, userId }) => {
             <img src={product.product_image} className='product-card__image' />
             <h2 className='product-card__name'>{product.product_name}</h2>
             <p className='product-card__price'>Price: ${product.product_price}</p>
-            <p className='product-card__quantity'>Quantity: {product.product_quantity}</p>
+            <p className='product-card__quantity'>Quantity: {quantity}</p>
             <button className='product-card__button' onClick={handleClick}>Add to Cart</button>
         </li>
     );
