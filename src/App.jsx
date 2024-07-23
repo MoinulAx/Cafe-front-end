@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar userId={userId} /> {/* Pass userId to NavBar */}
+        <NavBar setUserId = {setUserId}userId={userId} /> {/* Pass userId to NavBar */}
         <main>
           <Routes>
             <Route path='/' element={<HomePage />} />

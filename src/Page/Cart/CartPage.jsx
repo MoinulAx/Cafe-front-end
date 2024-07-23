@@ -68,18 +68,24 @@ function CartPage({ userId }) {
   }, [cart]);
 
   if (id == 1) {
-    return <Owner />;
+    return (
+        <>
+        {userId &&<Owner />}
+        </>
+    )
   }
 
   return (
-    <div className="products-page">
+    <>
+    {userId && <div className="products-page">
       <h1>Cart</h1>
       <ul>
         {cart.map(cartItem => (
           <UserProductCard key={cartItem.cart_product_id} product={cartItem} />
         ))}
       </ul>
-    </div>
+    </div>}
+    </>
   );
 }
 

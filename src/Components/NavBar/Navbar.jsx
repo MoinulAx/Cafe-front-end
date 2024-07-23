@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 
-const NavBar = ({ userId }) => {
+const NavBar = ({ userId,setUserId }) => {
+  const handleLogout = () => {
+    setUserId(null)
+  };
+
   return (
     <nav>
       <Link to='/' className="logo">LaManRis Café</Link>
-      <Link to='/login'>{userId ? "Logout" : "Login"}</Link>
+      {userId ? (
+        <>
+          <Link to='/login' onClick={handleLogout}>Logout</Link>
+          <Link to={userId == 1 ? '/orders' : `/user/${userId}`}>{userId == 1 ? "Orders" : "Cart"}</Link>
+        </>
+      ) : (
+        <Link to='/login'>Login</Link>
+      )}
       <Link to='/products'>Products</Link>
-      {userId && <Link to={`/user/${userId}`}>{userId == 1 ? "Orders" : "Cart"}</Link>}
     </nav>
   );
-}
+};
 
 export default NavBar;
