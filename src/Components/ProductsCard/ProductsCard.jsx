@@ -8,7 +8,7 @@ const ProductCard = ({ product, userId }) => {
     const newProduct = {
         carts_id: userId,
         products_id: product.product_id,
-        products_quantity: 0
+        products_quantity: 1
     }
 
     const handleClick = (e) => {

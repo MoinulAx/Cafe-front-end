@@ -4,7 +4,9 @@ const UserProductCard = ({ product, userCart }) => {
     const [quantity, setQuantity] = useState(userCart.products_quantity);
     const API = `${import.meta.env.VITE_BASE_URL}/cart_products`
     const updatedProduct = {
-        
+        carts_id: userCart.cart_id,
+        products_id: product.product_id,
+        products_quantity: 1
     }
 
     const incrementQuantity = () => {
