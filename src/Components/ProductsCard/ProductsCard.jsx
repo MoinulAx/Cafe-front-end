@@ -45,6 +45,7 @@ const ProductCard = ({ product, userId }) => {
             .catch(err => console.error(err))
         }
         if(quantity == 0){
+            console.log(quantity)
             fetch(`${PRODUCTS_API}/${product.product_id}`, {
                 method: "DELETE"
             })
@@ -64,16 +65,16 @@ const ProductCard = ({ product, userId }) => {
     );
 };
 
-ProductCard.propTypes = {
-    product: PropTypes.shape({
-        product_id: PropTypes.number.isRequired,
-        product_name: PropTypes.string.isRequired,
-        product_price: PropTypes.string.isRequired,
-        product_quantity: PropTypes.number.isRequired,
-        product_details: PropTypes.string,
-        product_image: PropTypes.string,
-        instock: PropTypes.bool.isRequired,
-    }).isRequired
-};
+// ProductCard.propTypes = {
+//     product: PropTypes.shape({
+//         product_id: PropTypes.number.isRequired,
+//         product_name: PropTypes.string.isRequired,
+//         product_price: PropTypes.string.isRequired,
+//         product_quantity: PropTypes.number.isRequired,
+//         product_details: PropTypes.string,
+//         product_image: PropTypes.string,
+//         instock: PropTypes.bool.isRequired,
+//     }).isRequired
+// };
 
 export default ProductCard;
