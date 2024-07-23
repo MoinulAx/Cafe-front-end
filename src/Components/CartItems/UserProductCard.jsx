@@ -9,13 +9,21 @@ const UserProductCard = ({ product, userCart }) => {
     useEffect(() => {
         fetch(`${API}/${userCart.cart_id}`)
             .then(res => res.json())
-            .then(res => setCartProducts(res));
-    }, [API, userCart.cart_id]);
+            .then(res => setCartProducts(res))
+            .catch(err => console.log(err))
+    }, []);
 
     useEffect(() => {
-        const cartProduct = cartProducts.find(cP => cP.products_id === product.product_id);
+        console.log(cartProducts)
+        let cartProduct;
+        if(Array.isArray(cartProducts)){
+            cartProduct = cartProducts.find(cP => cP.products_id === product.product_id);
+        }else{
+            cartProduct = cartProducts
+        }
+        
         setSingleCartProduct(cartProduct);
-    }, [cartProducts, product.product_id]);
+    }, [cartProducts]);
 
     const updateProductQuantity = (newQuantity) => {
         const updatedProduct = {
