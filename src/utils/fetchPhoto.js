@@ -9,7 +9,7 @@ async function fetchPhotosUnsplash(product) {
         params: {
           query: product,
           client_id: UNSPLASH_ACCESS_KEY,
-          per_page: 2 // Number of photos per request (you can adjust this)
+          per_page: 1 // Number of photos per request (you can adjust this)
         }
       });
   

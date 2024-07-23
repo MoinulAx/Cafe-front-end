@@ -1,0 +1,36 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f8f8f8;
+    color: #333;
+  
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  
+    a {
+      font-size: 1.2rem;
+      color: #007bff;
+      text-decoration: none;
+      border: 1px solid #007bff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.3s, color 0.3s;
+  
+      &:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+    }
+  }
+  

@@ -6,7 +6,8 @@ import './login.scss'
 import SignInForm from '../../Components/SignIn/SignIn';
 import SignUpForm from '../../Components/SignUp/SignUp';
 
-const LoginPage = ({setIsSignIn , isSignIn}) => {
+const LoginPage = ({setUserId}) => {
+  const [isSignIn, setIsSignIn] = useState(true);
 
   const toggleForm = () => {
     setIsSignIn(!isSignIn);
@@ -14,13 +15,13 @@ const LoginPage = ({setIsSignIn , isSignIn}) => {
 
   return (
     <div className="login-page">
-      {isSignIn ? <SignInForm /> : <SignUpForm />}
-      <p>
+      {isSignIn ? <SignInForm setUserId = {setUserId}/> : <SignUpForm setIsSignIn={setIsSignIn}/>}
+      <div className='toggle-container'>
         {isSignIn ? "Don't have an account? " : "Already have an account? "}
-        <a href="#" onClick={toggleForm}>
+        <p className='link' onClick={toggleForm}>
           {isSignIn ? "Sign Up" : "Sign In"}
-        </a>
-      </p>
+        </p>
+      </div>
     </div>
   );
 };

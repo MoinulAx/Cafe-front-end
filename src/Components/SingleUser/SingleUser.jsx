@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/fetchPhoto';
-
-import UserProductCard from '../ProductsCard/UserProductCard';
+import Owner from '../../Page/Owner/Owner';
+import UserProductCard from '../CartItems/UserProductCard';
 
 const SingleUser = () => {
     const { id } = useParams();
-    const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
-    const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
     const [userCart, setUserCart] = useState([]);
     const [userCartProducts, setUserCartProducts] = useState([]);
+    const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
+    const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
 
     useEffect(() => {
         fetch(CART_API)
             .then((res) => res.json())
-            .then((res) => setUserCart(res))
+            .then((res) => setUserCart(res) )
             .catch((err) => console.error(err));
     }, []);
 
@@ -42,6 +42,7 @@ const SingleUser = () => {
         if (userCart.length > 0) {
             fetchProducts();
         }
+
     }, [userCart]);
 
     useEffect(() => {
@@ -69,6 +70,10 @@ const SingleUser = () => {
         }
     }, [userCartProducts]);
 
+    if(id == 1) {
+        return <Owner />
+    }
+
     return (
         <div className="products-page">
             <h1>Products</h1>
@@ -86,6 +91,7 @@ const SingleUser = () => {
                     </>
                 )}
             </ul>
+            <button onClick={handleSubmit}>Submit Order</button>
         </div>
     );
 };

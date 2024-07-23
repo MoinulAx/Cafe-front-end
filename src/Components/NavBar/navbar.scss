@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+
+$primary-color: burlywood;
+$secondary-color: brown;
+$cursive-font: 'Dancing Script', cursive;
 
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center; 
-  background-color: burlywood;
+  background-color: $primary-color;
   padding: 1rem;
   border-radius: 15px; 
-  font-family: 'Poppins', sans-serif; 
+  font-family: $cursive-font; /* Apply cursive font to the entire nav */
+
   position: sticky;
 }
 
@@ -22,8 +27,8 @@ nav .logo {
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    color: burlywood;
-    background-color: brown;
+    color: $primary-color;
+    background-color: $secondary-color;
     box-shadow: 0 4px 8px white;
     transform: rotate(-5deg) scale(1.1); 
   }
@@ -39,8 +44,8 @@ nav a {
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    color: burlywood;
-    background-color: brown; 
+    color: $primary-color;
+    background-color: $secondary-color; 
     box-shadow: 0 4px 8px white;
     transform: rotate(-5deg) scale(1.1); 
   }
