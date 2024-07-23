@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage setUserId={setUserId} />} />
-            <Route path='/products' element={<ProductsPage userId={userId}/>} />
+            <Route path='/products' element={<ProductsPage userId = {userId}/>} />
             <Route path='/user/:id' element={<CartPage userId={userId} />} />
           </Routes>
         </main>

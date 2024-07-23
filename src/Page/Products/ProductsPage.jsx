@@ -134,6 +134,7 @@ function ProductsPage({userId}) {
                         key={product.product_id}
                         product={product}
                         userId={userId}
+                        
                     />
                 ))}
             </ul>

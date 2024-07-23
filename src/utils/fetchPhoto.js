@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const UNSPLASH_ACCESS_KEY = '5z8OygGxzGdDOAMcJT2s8EcnRAfP_2EyUm0crNdA4oc';
+const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 const UNSPLASH_URL = 'https://api.unsplash.com/search/photos';
 
 async function fetchPhotosUnsplash(product) {
