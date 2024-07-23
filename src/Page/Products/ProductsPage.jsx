@@ -102,7 +102,7 @@ function ProductsPage({userId}) {
         <div className="products-page">
             <h1>Products</h1>
             {userId == 1 && <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct} className="product-form">
-        <input  
+    <input  
                 type="text"
                 name="product_name"
                 value={newProduct.product_name}
