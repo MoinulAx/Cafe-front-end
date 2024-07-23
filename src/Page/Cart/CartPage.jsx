@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { fetchPhotos } from "../../utils/fetchPhoto";
 import ErrorPage from "../../Components/404Err/ErrorPage";
 
-const API_URL = `${import.meta.env.VITE_BASE_URL}/cart_products`;
 
 function CartPage({ userId }) {
   const [cart, setCart] = useState([]);
@@ -14,6 +13,7 @@ function CartPage({ userId }) {
   const { id } = useParams();
   const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
   const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
+  
 
   useEffect(() => {
     fetch(CART_API)
@@ -71,7 +71,7 @@ function CartPage({ userId }) {
   if (id == 1) {
     return (
         <>
-        {userId &&<Owner />}
+        {userId && <Owner />}
         </>
     )
   }
@@ -81,8 +81,8 @@ function CartPage({ userId }) {
     {userId ? <div className="products-page">
       <h1>Cart</h1>
       <ul>
-        {cart.map(cartItem => (
-          <UserProductCard key={cartItem.cart_product_id} product={cartItem} />
+        {cart.map((cartItem, i) => (
+          <UserProductCard key={cartItem.cart_product_id} product={cartItem} userCart={userCart[i]}/>
         ))}
       </ul>
     </div> : <ErrorPage/> }

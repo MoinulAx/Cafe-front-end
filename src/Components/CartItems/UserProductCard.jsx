@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 
-const UserProductCard = ({ product }) => {
-    const [quantity, setQuantity] = useState(product.product_quantity);
+const UserProductCard = ({ product, userCart }) => {
+    const [quantity, setQuantity] = useState(userCart.products_quantity);
+    const API = `${import.meta.env.VITE_BASE_URL}/cart_products`
+    const updatedProduct = {
+        
+    }
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
+
+        fetch(API, {
+            method: "PUT",
+            body: JSON.stringify(),
+            headers:{
+                "Content-type": "application/json"
+            }
+        })
     };
 
     const decrementQuantity = () => {
