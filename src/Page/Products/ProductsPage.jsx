@@ -7,16 +7,14 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 
 function ProductsPage() {
     const [products, setProducts] = useState([]);
-    // Handle the new new product form input
     const [newProduct, setNewProduct] = useState({ name: '', price: '', description: '' });
-    // Handle the product being edited
     const [editingProduct, setEditingProduct] = useState(null);
 
     useEffect(() => {
         fetch(API_URL)
             .then(res => res.json())
             .then(res => setProducts(res))
-            .catch(err => console.error(err))
+            .catch(err => console.error(err));
     }, []);
 
     useEffect(() => {
@@ -24,12 +22,11 @@ function ProductsPage() {
             try {
                 const photos = await fetchPhotos(products);
 
-                // Map through the products and add photo URLs
                 const updatedProducts = products.map((product, index) => {
                     const photo = photos[index];
                     return {
                         ...product,
-                        product_image: photo ? photo.urls.small : null, // Add photo URL to each product
+                        product_image: photo ? photo.urls.small : null,
                     };
                 });
 
@@ -47,9 +44,8 @@ function ProductsPage() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewProduct({ ...newProduct, [name]: value });
-    }
+    };
 
-    // Create: Add a new product
     const handleCreateProduct = (e) => {
         e.preventDefault();
         fetch(API_URL, {
@@ -64,16 +60,14 @@ function ProductsPage() {
                 setProducts([...products, product]);
                 setNewProduct({ name: '', price: '', description: '' });
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     };
 
-    // Set product to be edited
-    const handleEditedProduct = (product) => {
+    const handleEditProduct = (product) => {
         setEditingProduct(product);
         setNewProduct(product);
     };
 
-    // Update : Update an existing product
     const handleUpdateProduct = (e) => {
         e.preventDefault();
         fetch(`${API_URL}/${editingProduct.product_id}`, {
@@ -92,9 +86,8 @@ function ProductsPage() {
                 setEditingProduct(null);
             })
             .catch(err => console.error(err));
-    }
+    };
 
-    // Delete: Delete an existing product
     const handleDeleteProduct = (product_id) => {
         fetch(`${API_URL}/${product_id}`, {
             method: 'DELETE'
@@ -105,11 +98,10 @@ function ProductsPage() {
             .catch(err => console.error(err));
     };
 
-
     return (
         <div className="products-page">
             <h1>Products</h1>
-            <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct}>
+            <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct} className="product-form">
                 <input
                     type="text"
                     name="name"
