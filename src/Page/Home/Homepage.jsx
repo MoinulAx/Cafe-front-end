@@ -4,27 +4,13 @@ import './home.scss';
 import { useNavigate, Link } from 'react-router-dom';
 
 const HomePage = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-    navigate('/login')
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-  };
-  const navigate = useNavigate()
+  
 
   return (
     <div className="home-page">
       <header className="header">
         <h1>Welcome to LaManRis Café</h1>
-        {loggedIn ? (
-          <button className="login-button" onClick={handleLogout}>Logout</button>
-        ) : (
-          <button className="login-button" onClick={handleLogin}>Login</button>
-        )}
+       
       </header>
       <section className="about">
         <h2>About Us</h2>

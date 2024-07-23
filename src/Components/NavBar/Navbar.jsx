@@ -1,20 +1,25 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./navbar.scss";
 
-const  NavBar = () => {
+const NavBar = ({ userId,setUserId }) => {
+  const handleLogout = () => {
+    setUserId(null)
+  };
 
-  const { id } = useParams()
   return (
     <nav>
-      
       <Link to='/' className="logo">LaManRis Café</Link>
-      <Link to='/login'>Login</Link>
-      <Link to= '/products'> Products</Link>
-      <Link to= {`/user/${id}`}> Cart</Link>
-      
-      
+      {userId ? (
+        <>
+          <Link to='/login' onClick={handleLogout}>Logout</Link>
+          <Link to={userId == 1 ? '/orders' : `/user/${userId}`}>{userId == 1 ? "Orders" : "Cart"}</Link>
+        </>
+      ) : (
+        <Link to='/login'>Login</Link>
+      )}
+      <Link to='/products'>Products</Link>
     </nav>
   );
-}
+};
 
 export default NavBar;
