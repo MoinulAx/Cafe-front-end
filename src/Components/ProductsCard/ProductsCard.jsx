@@ -16,7 +16,7 @@ const ProductCard = ({ product, userId }) => {
 
     return (
         <li className="product-card">
-            <img src={product.product_image}  className='product-card__image'/>
+            <img src={product.product_image} className='product-card__image' />
             <h2 className='product-card__name'>{product.product_name}</h2>
             <p className='product-card__price'>Price: ${product.product_price}</p>
             <p className='product-card__quantity'>Quantity: {product.product_quantity}</p>
@@ -35,6 +35,8 @@ ProductCard.propTypes = {
         product_image: PropTypes.string,
         instock: PropTypes.bool.isRequired,
     }).isRequired,
+    onEdit: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
 };
 
 export default ProductCard;
