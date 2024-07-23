@@ -34,7 +34,7 @@ const SignUpForm = () => {
         .then( res => res.json())
         .then( res =>{ 
             console.log(res)
-            navigate(`/users/${res.user.user_id}`)
+            navigate(`/login`)
         })
         .catch( err => console.error(err))
     }

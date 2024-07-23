@@ -12,7 +12,7 @@ const NavBar = ({ userId,setUserId }) => {
       {userId ? (
         <>
           <Link to='/login' onClick={handleLogout}>Logout</Link>
-          <Link to={userId == 1 ? '/orders' : `/user/${userId}`}>{userId == 1 ? "Orders" : "Cart"}</Link>
+          <Link to={`user/${userId}`}>{userId == 1 ? "Orders" : "Cart"}</Link>
         </>
       ) : (
         <Link to='/login'>Login</Link>
