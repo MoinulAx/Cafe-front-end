@@ -10,8 +10,6 @@ const UserProductCard = ({ product, userCart }) => {
     }
 
     const incrementQuantity = () => {
-        setQuantity(quantity + 1);
-
         fetch(API, {
             method: "PUT",
             body: JSON.stringify(),
@@ -19,6 +17,8 @@ const UserProductCard = ({ product, userCart }) => {
                 "Content-type": "application/json"
             }
         })
+        .then( res => res.json())
+        .then( res => setQuantity(quantity + 1))
     };
 
     const decrementQuantity = () => {
