@@ -5,7 +5,7 @@ import { fetchPhotos } from "../../utils/fetchPhoto";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}/products`;
 
-function ProductsPage() {
+function ProductsPage({userId}) {
     const [products, setProducts] = useState([]);
     // Handle the new new product form input
     const [newProduct, setNewProduct] = useState({ name: '', price: '', description: '' });
@@ -141,8 +141,7 @@ function ProductsPage() {
                     <ProductCard
                         key={product.product_id}
                         product={product}
-                        onEdit={() => handleEditProduct(product)}
-                        onDelete={() => handleDeleteProduct(product.product_id)}
+                        userId={userId}
                     />
                 ))}
             </ul>
