@@ -20,9 +20,7 @@ const SignInForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const foundUser = users.find( user => user.user_name.toLowerCase() === currentUser.username.toLowerCase() )
-
-    console.log(foundUser)
+    const foundUser = users.find(user => user.user_name.toLowerCase() === currentUser.username.toLowerCase())
 
     if(foundUser && currentUser.password === foundUser.user_password){
       navigate(`/user/${foundUser.user_id}`)

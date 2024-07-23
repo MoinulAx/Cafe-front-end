@@ -8,6 +8,7 @@ import LoginPage from './Page/Login/LoginPage';
 import ProductsPage from './Page/Products/ProductsPage';
 import User from './Page/User/User';
 import UserProductCard from './Components/CartItems/UserProductCard';
+import Edit from './Page/Edit/Edit';
 
 
 import './App.css'
@@ -28,6 +29,8 @@ function App() {
             <Route path='/login' element={ <LoginPage /> } />
             <Route path='/products' element={ <ProductsPage /> } />
             <Route path='/user/:id' element={ <CartPage/> }/>
+            <Route path='/user/:id/edit' element={ <Edit/> }/>
+            
           </Routes>
 
         </main>

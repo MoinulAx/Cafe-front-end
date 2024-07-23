@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Orders.scss"
+import OrdersCard from './OrdersCard';
 
 const Orders = () => {
   const API_URL = `${import.meta.env.VITE_BASE_URL}/orders`;
@@ -60,24 +61,9 @@ const Orders = () => {
     <div className="orders-container">
       <h2>Orders</h2>
       <ul>
-        {orders.map((order) => (
-          <li key={order.order_id}>
-            <h3>Order ID: {order.order_id}</h3>
-            <p>User ID: {order.order_user}</p>
-            <h4>Cart Products:</h4>
-            <ul>
-              {order.cartProducts.length > 0 ? (
-                order.cartProducts.map((product) => (
-                  <li key={product.product_id}>
-                    {product.product_name} - {product.quantity}
-                  </li>
-                ))
-              ) : (
-                <li>No products in cart</li>
-              )}
-            </ul>
-          </li>
-        ))}
+        {orders.map((order) => {
+            return <OrdersCard order={order}/>
+        })}
       </ul>
     </div>
   );
