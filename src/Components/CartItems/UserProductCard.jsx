@@ -14,7 +14,6 @@ const UserProductCard = ({ product, userCart }) => {
     }, []);
 
     useEffect(() => {
-        console.log(cartProducts)
         let cartProduct;
         if(Array.isArray(cartProducts)){
             cartProduct = cartProducts.find(cP => cP.products_id === product.product_id);

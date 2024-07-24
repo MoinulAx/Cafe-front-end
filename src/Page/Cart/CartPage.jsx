@@ -14,6 +14,9 @@ function CartPage({ userId }) {
   const CART_API = `${import.meta.env.VITE_BASE_URL}/carts/${id}`;
   const PRODUCTS_API = `${import.meta.env.VITE_BASE_URL}/products`;
   
+  const handleSubmit = () => {
+    
+  }
 
   useEffect(() => {
     fetch(CART_API)
@@ -85,7 +88,9 @@ function CartPage({ userId }) {
           <UserProductCard key={cartItem.cart_product_id} product={cartItem} userCart={userCart[i]}/>
         ))}
       </ul>
-    </div> : <ErrorPage/> }
+      <button type="submit" onClick={handleSubmit}>Submit Order</button>
+    </div> 
+    : <ErrorPage/> }
     </>
   );
 }

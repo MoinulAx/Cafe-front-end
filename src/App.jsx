@@ -8,11 +8,13 @@ import LoginPage from './Page/Login/LoginPage';
 import ProductsPage from './Page/Products/ProductsPage';
 import User from './Page/User/User';
 import CartPage from './Page/Cart/CartPage';
+import Edit from './Page/Edit/Edit';
 
 import './App.css';
 
 function App() {
   const [userId, setUserId] = useState(null); // State to hold userId
+  const [editor, setEditor] = useState(null)
 
   return (
     <div>
@@ -24,6 +26,7 @@ function App() {
             <Route path='/login' element={<LoginPage setUserId={setUserId} />} />
             <Route path='/products' element={<ProductsPage userId={userId}/>} />
             <Route path='/user/:id' element={<CartPage userId={userId} />} />
+            <Route path='/user/:id/edit' element={ <Edit /> }/>
           </Routes>
         </main>
       </Router>
